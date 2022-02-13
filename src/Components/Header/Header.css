@@ -1,0 +1,21 @@
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .brand {
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--primary-color);
+}
+
+header .header-right-menu {
+    display: flex;
+    gap: 20px;
+}
+
+header .profile-menu-button {
+    color: var(--text-black);
+}

@@ -1,0 +1,20 @@
+#sidebar nav {
+    max-width: 90%;
+    height: calc(100vh - 85px);
+    border-right: 1px solid #ddd;
+}
+
+#sidebar .active {
+    background-color: var(--primary-color-lite);
+    color: var(--primary-color);
+}
+
+#sidebar .active .MuiSvgIcon-root {
+    color: var(--primary-color);
+}
+
+#sidebar nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
