@@ -36,3 +36,38 @@ export const getJobList = () => {
         }
     ]
 }
+
+export const getkanbanColumns = () => {
+    return [
+        {
+            label: 'All Candidate',
+            id: 'NEW',
+            level: 'level-1'
+        },
+        {
+            label: 'Contacted',
+            id: 'CONTACTED',
+            level: 'level-2'
+        },
+        {
+            label: 'Written Test',
+            id: 'WRITTEN',
+            level: 'level-3'
+        },
+        {
+            label: 'Technical Round',
+            id: 'TECHNICAL',
+            level: 'level-4'
+        },
+        {
+            label: 'Culture Fit Round',
+            id: 'CULTURE',
+            level: 'level-5'
+        },
+        {
+            label: 'Offer Initiate',
+            id: 'OFFER',
+            level: 'level-6'
+        }
+    ]
+}

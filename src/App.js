@@ -25,7 +25,6 @@ function App() {
     // get random candidate profiles from api.
     getRequestedData(candidateURL).then(({results}) => {
       console.log('loading candidates.....')
-      // toastId.current = toast("Lorem ipsum dolor");
       const id = toast.loading("Please wait...", {className: 'toast-position' })
 
       // static job id
