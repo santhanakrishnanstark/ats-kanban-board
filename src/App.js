@@ -2,6 +2,8 @@ import { Divider, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Header from './Components/Header/Header';
 import JobBoardComponent from './Components/JobBoardComponent/JobBoardComponent';
@@ -12,20 +14,24 @@ import { getJobList, getRequestedData } from './services/getRequestData';
 function App() {
 
   const [candidates, setCandidates] = useState([]);
-  const candidateURL = 'https://randomuser.me/api/?results=10';
-  
   const [jobList, setJobList] = useState([]);
 
   useEffect(() => {
 
-    // get random candidate profiles
+    // set number of candidate profile needed.
+    const candidateCount = 100;
+    const candidateURL = 'https://randomuser.me/api/?results='+candidateCount;
+
+    // get random candidate profiles from api.
     getRequestedData(candidateURL).then(({results}) => {
       console.log('loading candidates.....')
+      // toastId.current = toast("Lorem ipsum dolor");
+      const id = toast.loading("Please wait...", {className: 'toast-position' })
 
       // static job id
       const jobIds = ['1101', '1102', '1103', '1104', '1105'];
       const candidateList = results.map((profile) => {
-        return {...profile, jobApplied: jobIds[Math.floor((Math.random() * jobIds.length-1)+1)] }
+        return {...profile, jobApplied: jobIds[Math.floor((Math.random() * jobIds.length-1)+1)], jobStatus: 'NEW' }
       })
       
       setCandidates(candidateList);
@@ -48,7 +54,12 @@ function App() {
 
       setJobList(list);
     
+      // loading status static extend for 3s.
       console.log('candidates loaded')
+      setTimeout(() => {
+        // toast.dismiss(toastId.current);
+        toast.update(id, { render: "Candidates loaded", type: "success", isLoading: false, autoClose: 0, className: 'toast-position' });
+      }, 1000);
     })
   }, [])
 
@@ -62,6 +73,7 @@ function App() {
           <Sidebar />
         </Grid>
         <Grid item xs={10}>
+          <ToastContainer limit={1} />
           <Routes>
             <Route path="/" element={<JobBoardComponent jobList={jobList} />} exact/>
             <Route path="/job/:jobId" element={<KanbanBoardComponent candidateList={candidates} />} />

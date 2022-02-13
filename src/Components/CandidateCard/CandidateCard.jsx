@@ -14,11 +14,11 @@ import "./CandidateCard.css";
 import { Draggable } from "react-beautiful-dnd";
 
 const CandidateCard = ({
-  candidate: { name, picture, cell, location, login },
+  candidate: { name, picture, cell, location },
   index,
 }) => {
   return (
-    <Draggable draggableId={login.uuid} index={index}>
+    <Draggable draggableId={"" + index} index={index}>
       {(provided) => (
         <Card
           className="candidate-card"
