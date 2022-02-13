@@ -29,3 +29,8 @@ button.MuiButton-containedPrimary {
 .MuiSvgIcon-root.MuiSvgIcon-colorSecondary {
   color: var(--color-secondary);
 }
+
+/* toast position css */
+.toast-position {
+  top: 70px;
+}
