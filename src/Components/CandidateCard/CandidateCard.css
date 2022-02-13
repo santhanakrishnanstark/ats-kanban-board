@@ -1,0 +1,5 @@
+.MuiPaper-root.candidate-card {
+    box-shadow: 0px 0px 30px #eee;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,67 @@
+#kanban-job-board .column {
+    min-width: 28%;
+    height: calc(100vh - 300px);
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#kanban-job-board .board-wrapper {
+    overflow-x: scroll;
+    padding-right: 60px;
+}
+
+#kanban-job-board .column .column-chip {
+    display: flex;
+    width: fit-content;
+    flex-direction: row-reverse;
+}
+
+#kanban-job-board .column .column-chip .MuiAvatar-circular {
+    margin: 0 5px 0px 0px;
+}
+
+
+#kanban-job-board .column .column-chip {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+#kanban-job-board .column .level-1 {
+    background-color: #ffe9c9;
+    color: #ff9800;
+}
+
+#kanban-job-board .column .level-2 {
+    background-color: #eacfef;
+    color: #9b28b1;
+}
+
+#kanban-job-board .column .level-3 {
+    background-color: #b2ddff;
+    color: #3f51b5;
+}
+
+#kanban-job-board .column .level-4 {
+    background-color: #ffe2ec;
+    color: #e91e63;
+}
+
+#kanban-job-board .column .level-5 {
+    background-color: #fff9c5;
+    color: #f3ad45;
+}
+
+#kanban-job-board .column .level-6 {
+    background-color: #d5fbaa;
+    color: #4eaf53;
+}
+
+.candidate-wrapper {
+    height: 100%;
+    overflow-y: scroll;
+
+    overflow-y: scroll;
+    height: 90%;
+    padding-right: 20px;
+}
