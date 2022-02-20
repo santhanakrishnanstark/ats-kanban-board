@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 import { getJobList, getkanbanColumns } from "../../services/getRequestData";
 import CandidateCard from "../CandidateCard/CandidateCard";
 import "./KanbanBoardComponent.css";
-import {} from "react-beautiful-dnd";
 
 const KanbanBoardComponent = ({ candidateList }) => {
   // filter candidateList by jobid
