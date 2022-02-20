@@ -2,13 +2,13 @@ import { Chip, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useParams } from "react-router-dom";
 import { getJobList, getkanbanColumns } from "../../services/getRequestData";
 import CandidateCard from "../CandidateCard/CandidateCard";
 import "./KanbanBoardComponent.css";
-import { Draggable } from "react-beautiful-dnd";
+import {} from "react-beautiful-dnd";
 
 const KanbanBoardComponent = ({ candidateList }) => {
   // filter candidateList by jobid
@@ -31,7 +31,7 @@ const KanbanBoardComponent = ({ candidateList }) => {
   }, [jobId, candidateList]);
 
   const onDragComplete = (result) => {
-    const { destination, source, draggableId, type } = result;
+    const { destination, source, type } = result;
 
     if (!destination) {
       return;
@@ -129,25 +129,25 @@ const KanbanBoardComponent = ({ candidateList }) => {
                     index={index}
                     key={index}
                   >
-                    {(provided) => (
+                    {(columnProvided) => (
                       <Box
                         className="column"
                         key={index}
-                        {...provided.draggableProps}
-                        ref={provided.innerRef}
+                        {...columnProvided.draggableProps}
+                        ref={columnProvided.innerRef}
                       >
                         <Chip
                           label={column.label}
                           className={"column-chip " + column.level}
-                          {...provided.dragHandleProps}
+                          {...columnProvided.dragHandleProps}
                         />
                         <Droppable droppableId={column.id} type="candidates">
-                          {(provided) => (
+                          {(candidateDroppableProvided) => (
                             <Box
                               mt={3}
                               className="candidate-wrapper"
-                              ref={provided.innerRef}
-                              {...provided.droppableProps}
+                              ref={candidateDroppableProvided.innerRef}
+                              {...candidateDroppableProvided.droppableProps}
                             >
                               {filteredList?.map((candidate, index) => {
                                 if (candidate.jobStatus === column.id) {
@@ -161,11 +161,11 @@ const KanbanBoardComponent = ({ candidateList }) => {
                                 }
                                 return null;
                               })}
-                              {provided.placeholder}
+                              {candidateDroppableProvided.placeholder}
                             </Box>
                           )}
                         </Droppable>
-                        {provided.placeholder}
+                        {columnProvided.placeholder}
                       </Box>
                     )}
                   </Draggable>
